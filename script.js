@@ -15,6 +15,13 @@ const btnHold = document.querySelector('.btn--hold');
 const current0El = document.getElementById('current--0');
 const current1El = document.getElementById('current--1');
 
+let winnerText = document.createElement('p');
+winnerText.textContent = 'You Win !';
+winnerText.style.color = '#c7365f';
+winnerText.style.fontSize = '25px';
+winnerText.style.marginBottom = 'auto';
+winnerText.style.fontWeight = '700';
+
 const init = function() {
     scores = [0,0];
     currentScore = 0;
@@ -33,6 +40,8 @@ const init = function() {
 
     player0El.classList.add('player--active');
     player1El.classList.remove('player--active');
+    winnerText.textContent = '';
+    
 }
 
 init();
@@ -72,12 +81,21 @@ btnHold.addEventListener('click', function() {
         scores[activePlayer] += currentScore;
         document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
         //2. Check if player's score is >= 100
-        if (scores[activePlayer] >= 20) {
+        if (scores[activePlayer] >= 10) {
             // If == 100, finish the game
             document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
             document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
             diceEl.classList.add('hidden');
             playing = false;
+
+            let current = document.querySelector(`.player--${activePlayer}`);
+            let score = document.getElementById(`score--${activePlayer}`);
+            let currentdiv = document.querySelector(`.player--${activePlayer} .current`)
+            
+            // insert a new node after global score 
+            current.insertBefore(winnerText, currentdiv);
+            score.style.marginBottom='0';
+        
         } else {
             // Else switch to next player
             switchPlayer();
