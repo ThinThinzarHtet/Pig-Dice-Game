@@ -22,6 +22,15 @@ body {
   justify-content: center;
 }
 
+a {
+  text-decoration: none;
+}
+
+li {
+  font-family: inherit;
+  font-size: 1.8rem;
+}
+
 /* LAYOUT */
 main {
   position: relative;
@@ -139,6 +148,9 @@ main {
 .btn--hold {
   top: 46.1rem;
 }
+.btn--howtoplay {
+  top: 33rem; 
+}
 
 .btn:active {
   transform: translate(-50%, 3px);
@@ -169,6 +181,47 @@ main {
 
 .hidden {
   display: none;
+}
+
+/* How to play */
+.hidden {
+  display: hidden;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
 }
 
 
@@ -254,12 +307,20 @@ main {
 }
 
 @media only screen and (max-width: 375px) {
+  .dice {
+    top: 22.5rem;
+  }
+
   .btn--roll {
-    top: 37.3rem;
+    top: 38.3rem;
   }
   
   .btn--hold {
     top: 44.1rem;
+  }
+
+  .btn--howtoplay {
+    top: 32.3rem; 
   }
 
   .current {
@@ -279,15 +340,19 @@ main {
 
   .dice {
     height: 6rem;
-    top: 22.5rem;
+    top: 20.5rem;
   }
 
   .btn--roll {
-    top: 32.3rem;
+    top: 33.3rem;
   }
   
   .btn--hold {
     top: 38rem;
+  }
+
+  .btn--howtoplay {
+    top: 28.3rem; 
   }
 
   .current-label {

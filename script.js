@@ -15,12 +15,15 @@ const btnHold = document.querySelector('.btn--hold');
 const current0El = document.getElementById('current--0');
 const current1El = document.getElementById('current--1');
 
+let score = document.getElementById(`score--${activePlayer}`);
+
 let winnerText = document.createElement('p');
 winnerText.textContent = 'You Win !';
 winnerText.style.color = '#c7365f';
 winnerText.style.fontSize = '25px';
 winnerText.style.marginBottom = 'auto';
 winnerText.style.fontWeight = '700';
+winnerText.setAttribute('id', 'winner');
 
 const init = function() {
     scores = [0,0];
@@ -40,8 +43,6 @@ const init = function() {
 
     player0El.classList.add('player--active');
     player1El.classList.remove('player--active');
-    winnerText.textContent = '';
-    
 }
 
 init();
@@ -89,7 +90,6 @@ btnHold.addEventListener('click', function() {
             playing = false;
 
             let current = document.querySelector(`.player--${activePlayer}`);
-            let score = document.getElementById(`score--${activePlayer}`);
             let currentdiv = document.querySelector(`.player--${activePlayer} .current`)
             
             // insert a new node after global score 
@@ -105,4 +105,9 @@ btnHold.addEventListener('click', function() {
 })
 
 //reset the game
-btnNew.addEventListener('click', init);
+btnNew.addEventListener('click', function() {
+    init();
+    document.getElementById('winner').remove();
+    console.log(score.style.marginBottom='auto');
+});
+
