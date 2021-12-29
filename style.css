@@ -29,6 +29,7 @@ a {
 li {
   font-family: inherit;
   font-size: 1.8rem;
+  margin-top: 1rem;
 }
 
 /* LAYOUT */
@@ -184,9 +185,6 @@ main {
 }
 
 /* How to play */
-.hidden {
-  display: hidden;
-}
 
 .close-modal {
   position: absolute;
@@ -267,6 +265,15 @@ main {
   .btn--new {
     top: 3rem;
   }
+
+  /* how to play box */
+  .modal {
+    padding: 5rem;
+  }
+
+  li {
+    font-size: 1.5rem;
+  }
 }
 
 /* small phone from 376 to 480px */
@@ -304,8 +311,23 @@ main {
     font-size: 3rem;
   }
 
+  /* how to play box */
+  .modal {
+    padding: 4rem;
+    width: 80%;
+  }
+  
+  li {
+    font-size: 1.2rem;
+  }
+
+  .close-modal {
+    font-size: 4rem;
+  }
+
 }
 
+/* 321px to 375px */
 @media only screen and (max-width: 375px) {
   .dice {
     top: 22.5rem;

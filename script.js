@@ -15,8 +15,6 @@ const btnHold = document.querySelector('.btn--hold');
 const current0El = document.getElementById('current--0');
 const current1El = document.getElementById('current--1');
 
-let score = document.getElementById(`score--${activePlayer}`);
-
 let winnerText = document.createElement('p');
 winnerText.textContent = 'You Win !';
 winnerText.style.color = '#c7365f';
@@ -43,6 +41,10 @@ const init = function() {
 
     player0El.classList.add('player--active');
     player1El.classList.remove('player--active');
+
+    document.getElementById(`score--0`).style.marginBottom='auto';
+
+    document.getElementById(`score--1`).style.marginBottom='auto';
 }
 
 init();
@@ -82,7 +84,7 @@ btnHold.addEventListener('click', function() {
         scores[activePlayer] += currentScore;
         document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
         //2. Check if player's score is >= 100
-        if (scores[activePlayer] >= 10) {
+        if (scores[activePlayer] >= 20) {
             // If == 100, finish the game
             document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
             document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
@@ -94,7 +96,7 @@ btnHold.addEventListener('click', function() {
             
             // insert a new node after global score 
             current.insertBefore(winnerText, currentdiv);
-            score.style.marginBottom='0';
+            document.getElementById(`score--${activePlayer}`).style.marginBottom='0';
         
         } else {
             // Else switch to next player
@@ -107,7 +109,28 @@ btnHold.addEventListener('click', function() {
 //reset the game
 btnNew.addEventListener('click', function() {
     init();
-    document.getElementById('winner').remove();
-    console.log(score.style.marginBottom='auto');
+    const e = document.getElementById('winner');
+    e.parentElement.removeChild(e);
 });
 
+// How to play button
+const btnHowToPlay = document.querySelector('.btn--howtoplay');
+const ruleBox = document.querySelector('.modal');
+const btncloseModal = document.querySelector('.close-modal');
+const overlay = document.querySelector('.overlay');
+
+const openModal = function () {
+    ruleBox.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+}
+
+const closeModal = function () {
+    ruleBox.classList.add('hidden');
+    overlay.classList.add('hidden');
+}
+
+btnHowToPlay.addEventListener('click', openModal);
+
+btncloseModal.addEventListener('click', closeModal);
+
+overlay.addEventListener('click', closeModal);
